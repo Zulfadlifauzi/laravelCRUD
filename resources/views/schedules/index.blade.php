@@ -6,17 +6,20 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Schedule Index') }}</div>
+                
                 <div class="card-body">
                     <table class='table'>
                         <thead>
                             <th>ID</th>
-                            <th>Title<th>
+                            <th>Title</th>
+                                <th>Description</th>
                         </thead>
                         <tbody>
                             @foreach ($schedules as $schedule)
                             <tr>
-                            <td>{{$schedule->id}}<td>
-                            <td>{{$schedule->title}}<td>
+                            <td>{{$schedule->id}}</td>
+                            <td>{{$schedule->title}}</td>
+                                <td>{{$schedule->description}}</td>
                             </tr>
                             @endforeach
                         </tbody>
