@@ -33,4 +33,9 @@ class ScheduleController extends Controller
     {
         return view('schedules.show',compact('schedule'));
     }
+    public function edit(Schedule $schedule)
+    {
+        return view('schedules.edit',compact('schedule'));
+    }
+
 }
