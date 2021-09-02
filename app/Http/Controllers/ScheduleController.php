@@ -8,8 +8,8 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-         $schedules = Schedule::all();
-
+         $user=auth()->user();
+         $schedules=$user->schedules()->paginate(2);
          return view('schedules.index', compact('schedules'));
     }
 
@@ -17,7 +17,6 @@ class ScheduleController extends Controller
     {
         return view('schedules.create');
     }
-
     public function store(Request $request)
     {
         $schedule = new Schedule();

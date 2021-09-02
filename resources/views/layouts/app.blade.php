@@ -36,6 +36,10 @@
                         <li class='nav-item'>
                             <a class='nav-link' href="{{ route('schedule:index') }}">Go to Schedules</a>
                         </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href="{{ route('schedule:create') }}">Create schedules</a>
+                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
