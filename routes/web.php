@@ -25,3 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Route::method('uri','action/callback')
 Route::get('/schedules',[App\Http\Controllers\ScheduleController::class,'index'])->name('schedule:index')->middleware('auth');
+
+Route::get('/schedules/create',[App\Http\Controllers\ScheduleController::class,'create'])->name('schedule:create');
