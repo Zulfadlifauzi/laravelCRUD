@@ -33,9 +33,25 @@ class ScheduleController extends Controller
     {
         return view('schedules.show',compact('schedule'));
     }
+
     public function edit(Schedule $schedule)
     {
         return view('schedules.edit',compact('schedule'));
+    }
+
+    public function destroy (Schedule $schedule)
+    {
+        $schedule->delete();
+        return redirect()->route('schedule:index');
+    }
+
+    public function update(Schedule $schedule, Request $request)
+    {
+        $schedule->title=$request->title;
+        $schedule->description=$request->description;
+        $schedule->save();
+
+        return redirect()->route('schedule:index');
     }
 
 }

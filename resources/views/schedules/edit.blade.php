@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Schedule Edit') }}</div>
 
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{route ('schedule:update', $schedule)}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label>Title</label>

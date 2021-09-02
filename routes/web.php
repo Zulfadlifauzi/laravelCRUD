@@ -30,3 +30,5 @@ Route::get('/schedules/create',[App\Http\Controllers\ScheduleController::class,'
 Route::post('/schedules/create',[App\Http\Controllers\ScheduleController::class,'store'])->name('schedule:store');
 Route::get('/schedules/{schedule}',[App\Http\Controllers\ScheduleController::class,'show'])->name('schedule:show');
 Route::get('/schedules/{schedule}/edit',[App\Http\Controllers\ScheduleController::class,'edit'])->name('schedule:edit');
+Route::post('/schedules/{schedule}/edit',[App\Http\Controllers\ScheduleController::class,'update'])->name('schedule:update');
+Route::get('/schedules/{schedule}/destroy',[App\Http\Controllers\ScheduleController::class,'destroy'])->name('schedule:destroy');

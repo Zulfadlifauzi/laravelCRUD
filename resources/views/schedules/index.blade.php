@@ -12,6 +12,8 @@
                         <thead>
                             <th>ID</th>
                             <th>Title</th>
+                            <th>User</th>
+                            <th>Description</th>
                             <th>Actions</th>
                         </thead>
                         <tbody>
@@ -19,9 +21,12 @@
                             <tr>
                             <td>{{$schedule->id}}</td>
                             <td>{{$schedule->title}}</td>
+                            <td>{{$schedule->user->name}}</td>
+                            <td>{{$schedule->description}}</td>
                             <td>
                             <a href="{{ route('schedule:show',$schedule) }}" class='btn btn-primary'>Show</a>
                             <a href="{{ route('schedule:edit',$schedule) }}" class='btn btn-success'>Edit</a>
+                            <a onclick="return confirm('Are you sure?')" href="{{ route('schedule:destroy', $schedule) }}" class='btn btn-danger'>Delete</a>
                             </td>
                             </tr>
                             @endforeach
