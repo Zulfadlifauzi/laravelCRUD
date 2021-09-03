@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Schedule;
+use File;
+use Storage;
 class ScheduleController extends Controller
 {
     public function index()
@@ -24,6 +26,15 @@ class ScheduleController extends Controller
         $schedule->description=$request->description;
         $schedule->user_id=auth()->user()->id;
         $schedule->save();
+
+        if($request->hasFile('attachment')){
+            $filename = $schedule->id.'-'.date('Y-m-d').'-'.$request->attachment->getClientOriginalExtension();
+
+            Storage::disk('public')->put($filename,File::get($request->attachment));
+
+            $schedule->attachment=$filename;
+            $schedule->save();
+        }
 
         return redirect()->route('schedule:index')->with([
             'alert-type' => 'alert-primary',

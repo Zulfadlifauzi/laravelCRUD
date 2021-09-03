@@ -16,6 +16,7 @@ class AlterSchedulesTableAddAttachmentColumn extends Migration
         Schema::table('schedules', function (Blueprint $table) {
             $table->string('attachment')->nullable()->after('description');
         });
+
     }
 
     /**
@@ -28,5 +29,6 @@ class AlterSchedulesTableAddAttachmentColumn extends Migration
         Schema::table('schedules', function (Blueprint $table) {
             $table->dropColumn('attachment');
         });
+
     }
 }
