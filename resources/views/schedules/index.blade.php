@@ -1,9 +1,14 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
+    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Schedule Index</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Schedule</li>
+                        </ol>
+                        <div class="row">
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
         @if(session()->has('alert'))
                 <div class="alert {{ session()->get('alert-type') }}" role="alert">
                     {{ session()->get('alert') }}
@@ -53,6 +58,6 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
 </div>
 @endsection
