@@ -77,4 +77,14 @@ class ScheduleController extends Controller
         ]);
     }
 
+    public function forceDestroy(Schedule $schedule)
+    {
+        $schedule->forceDelete();
+        return redirect()->route('schedule:index')->with([
+            'alert-type' => 'alert-danger',
+            'alert'=>'Your schedule has been force deleted!' 
+        ]);
+
+    }
+
 }
