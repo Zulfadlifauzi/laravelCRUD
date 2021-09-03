@@ -54,6 +54,10 @@ class ScheduleController extends Controller
 
     public function destroy (Schedule $schedule)
     {
+        if($schedule->attachment){
+            Storage::disk('public')->delete($schedule->attachment);
+        }
+
         $schedule->delete();
         return redirect()->route('schedule:index')->with([
             'alert-type' => 'alert-danger',
