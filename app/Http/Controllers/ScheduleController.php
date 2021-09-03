@@ -9,7 +9,7 @@ class ScheduleController extends Controller
     public function index()
     {
          $user=auth()->user();
-         $schedules=$user->schedules()->paginate(2);
+         $schedules=$user->schedules()->paginate(3);
          return view('schedules.index', compact('schedules'));
     }
 
@@ -25,7 +25,10 @@ class ScheduleController extends Controller
         $schedule->user_id=auth()->user()->id;
         $schedule->save();
 
-        return redirect()->route('schedule:index');
+        return redirect()->route('schedule:index')->with([
+            'alert-type' => 'alert-primary',
+            'alert'=>'Your schedule has been saved!' 
+        ]);
     }
 
     public function show(Schedule $schedule)
@@ -41,7 +44,10 @@ class ScheduleController extends Controller
     public function destroy (Schedule $schedule)
     {
         $schedule->delete();
-        return redirect()->route('schedule:index');
+        return redirect()->route('schedule:index')->with([
+            'alert-type' => 'alert-danger',
+            'alert'=>'Your schedule has been deleted!' 
+        ]);
     }
 
     public function update(Schedule $schedule, Request $request)
@@ -50,7 +56,10 @@ class ScheduleController extends Controller
         $schedule->description=$request->description;
         $schedule->save();
 
-        return redirect()->route('schedule:index');
+        return redirect()->route('schedule:index')->with([
+            'alert-type' => 'alert-success',
+            'alert'=>'Your schedule has been updated!' 
+        ]);
     }
 
 }
