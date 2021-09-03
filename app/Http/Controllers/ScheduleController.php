@@ -8,11 +8,19 @@ use File;
 use Storage;
 class ScheduleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+        if($request->keyword){
+            $user=auth()->user();
+            $schedules=$user->schedules()
+            ->where('title','LIKE','%'.$request->keyword.'%')
+            ->orwhere('description','LIKE','%'.$request->keyword.'%')->paginate(2);
+        }else{
          $user=auth()->user();
          $schedules=$user->schedules()->paginate(3);
-         return view('schedules.index', compact('schedules'));
+        }
+        return view('schedules.index', compact('schedules'));
     }
 
     public function create()
